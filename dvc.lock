@@ -1,0 +1,71 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py data/data.csv data/clean_data.csv params.yaml
+    deps:
+    - path: data/data.csv
+      hash: md5
+      md5: 9a78e943d812e6483d8cbeff4a0d16f1
+      size: 39952
+    - path: params.yaml
+      hash: md5
+      md5: 1f9ba7434ec6394ad4302a1b38ae1c21
+      size: 160
+    outs:
+    - path: data/clean_data.csv
+      hash: md5
+      md5: acc5066acce262b679b63e3013d60c2d
+      size: 11517
+  train:
+    cmd: python src/train.py data/clean_data.csv models/model.pkl params.yaml
+    deps:
+    - path: data/clean_data.csv
+      hash: md5
+      md5: acc5066acce262b679b63e3013d60c2d
+      size: 11517
+    - path: params.yaml
+      hash: md5
+      md5: 1f9ba7434ec6394ad4302a1b38ae1c21
+      size: 160
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: bcc693974bc80d56fa56beb6c3cad6bf
+      size: 939
+  evaluate:
+    cmd: python src/evaluate.py data/clean_data.csv models/model.pkl metrics.json
+      params.yaml
+    deps:
+    - path: data/clean_data.csv
+      hash: md5
+      md5: acc5066acce262b679b63e3013d60c2d
+      size: 11517
+    - path: models/model.pkl
+      hash: md5
+      md5: bcc693974bc80d56fa56beb6c3cad6bf
+      size: 939
+    - path: params.yaml
+      hash: md5
+      md5: 1f9ba7434ec6394ad4302a1b38ae1c21
+      size: 160
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 89babaf7ee742545957e29fb662eefbd
+      size: 63
+  exploration:
+    cmd: python src/exploration.py
+    deps:
+    - path: data/data.csv
+      hash: md5
+      md5: 9a78e943d812e6483d8cbeff4a0d16f1
+      size: 39952
+    - path: params.yaml
+      hash: md5
+      md5: f387c3dd6ed9e62f6a1652c95635ec95
+      size: 231
+    outs:
+    - path: data/missing_values.txt
+      hash: md5
+      md5: ec7cc1b923a166e01d4c263813b5b335
+      size: 320

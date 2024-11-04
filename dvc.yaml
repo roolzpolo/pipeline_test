@@ -23,3 +23,10 @@ stages:
     metrics:
     - metrics.json:
         cache: false
+  exploration:
+    cmd: python src/exploration.py
+    deps:
+    - data/data.csv
+    - params.yaml
+    outs:
+    - data/missing_values.txt

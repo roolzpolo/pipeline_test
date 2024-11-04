@@ -1,8 +1,17 @@
 train:
   test_size: 0.2
   random_state: 42
-  alpha: 0.1
+  alpha: 0.9
 
 preprocessing:
   target: price
-  features: [area, bedrooms, bathrooms, stories, parking]
+  features:
+  - area
+  - bedrooms
+  - bathrooms
+  - stories
+  - parking
+
+data_path: 'data/data.csv'
+output_missing: 'data/missing_values.txt'
+

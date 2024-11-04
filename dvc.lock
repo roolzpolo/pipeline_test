@@ -9,8 +9,8 @@ stages:
       size: 39952
     - path: params.yaml
       hash: md5
-      md5: f387c3dd6ed9e62f6a1652c95635ec95
-      size: 231
+      md5: ceae5f54a9fb7e7cea73f8a761741e2b
+      size: 407
     outs:
     - path: data/clean_data.csv
       hash: md5
@@ -25,15 +25,15 @@ stages:
       size: 11517
     - path: params.yaml
       hash: md5
-      md5: 1f9ba7434ec6394ad4302a1b38ae1c21
-      size: 160
+      md5: ceae5f54a9fb7e7cea73f8a761741e2b
+      size: 407
     outs:
     - path: models/model.pkl
       hash: md5
       md5: bcc693974bc80d56fa56beb6c3cad6bf
       size: 939
   evaluate:
-    cmd: python src/evaluate.py data/clean_data.csv models/model.pkl metrics.json
+    cmd: python src/evaluate.py models/model.pkl data/clean_data.csv params.yaml metrics.json
       params.yaml
     deps:
     - path: data/clean_data.csv
@@ -46,13 +46,13 @@ stages:
       size: 939
     - path: params.yaml
       hash: md5
-      md5: 1f9ba7434ec6394ad4302a1b38ae1c21
-      size: 160
+      md5: ceae5f54a9fb7e7cea73f8a761741e2b
+      size: 407
     outs:
     - path: metrics.json
       hash: md5
-      md5: 89babaf7ee742545957e29fb662eefbd
-      size: 63
+      md5: 53640a73048bf5e3427ac3caedad9ae9
+      size: 53
   exploration:
     cmd: python src/exploration.py
     deps:

@@ -14,11 +14,11 @@ stages:
     outs:
     - models/model.pkl
   evaluate:
-    cmd: python src/evaluate.py data/clean_data.csv models/model.pkl metrics.json
+    cmd: python src/evaluate.py models/model.pkl data/clean_data.csv params.yaml metrics.json
       params.yaml
     deps:
-    - data/clean_data.csv
     - models/model.pkl
+    - data/clean_data.csv
     - params.yaml
     metrics:
     - metrics.json:

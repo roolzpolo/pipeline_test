@@ -9,8 +9,8 @@ stages:
       size: 39952
     - path: params.yaml
       hash: md5
-      md5: 1f9ba7434ec6394ad4302a1b38ae1c21
-      size: 160
+      md5: f387c3dd6ed9e62f6a1652c95635ec95
+      size: 231
     outs:
     - path: data/clean_data.csv
       hash: md5
